@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="ConsoleMenu-simple" Version="2.4.2" />
+    <PackageReference Include="Microsoft.AspNet.WebApi.Client" Version="5.2.7" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\OSAHN6_HFT_202231.Logic\OSAHN6_HFT_202231.Logic.csproj" />
+    <ProjectReference Include="..\OSAHN6_HFT_202231.Models\OSAHN6_HFT_202231.Models.csproj" />
+    <ProjectReference Include="..\OSAHN6_HFT_202231.Repository\OSAHN6_HFT_202231.Repository.csproj" />
+  </ItemGroup>
+
+</Project>

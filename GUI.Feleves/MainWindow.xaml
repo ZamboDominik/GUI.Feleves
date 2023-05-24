@@ -1,0 +1,60 @@
+﻿<Window x:Class="GUI.Feleves.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GUI.Feleves"
+        xmlns:viewmodel="clr-namespace:GUI.Feleves.VeiwModels"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="500" Width="1500" GotFocus="Window_GotFocus">
+    <Window.DataContext>
+        <viewmodel:MainWindowViewModel/>
+    </Window.DataContext>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <ListBox x:Name="Lb_teams" ItemsSource="{Binding Teams,UpdateSourceTrigger=PropertyChanged,NotifyOnTargetUpdated=True}" TargetUpdated="Lb_teams_TargetUpdated" SelectedItem="{Binding SelectedTeam}" SelectionChanged="Lb_teams_SelectionChanged_1" SourceUpdated="Lb_teams_SourceUpdated"  >
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Label Content="{Binding Name}" />
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <StackPanel Grid.Column="1">
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Head Coach:" />
+                <Label Content="{Binding SelectedCoach.CoachName}"/>
+            </StackPanel>
+            <ListBox x:Name="Lb_Players" ItemsSource="{Binding SelectedPlayers}" SelectedItem="{Binding SelectedPlayer}" SelectionChanged="Lb_Players_SelectionChanged" >
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Label Content= "{Binding Name}"/>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+
+        </StackPanel>
+        <StackPanel Grid.Column="2">
+            <StackPanel Orientation="Horizontal">
+                <Button x:Name="btn_CreateTeam" IsEnabled="True" Content="Create Team"  Margin="10,10,10,10" Command="{Binding CreateTeam}" Click="btn_CreateTeam_Click"/>
+                <Button x:Name="btn_UpdateTeam" IsEnabled="False" Content="Update Team"  Margin="10,10,10,10" Command="{Binding UpdateTeam}"/>
+                <Button x:Name="btn_DeleteTeam" IsEnabled="False" Content="Delete Team"  Margin="10,10,10,10" Command="{Binding DeleteTeam}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Button x:Name="btn_CreatePlayer" IsEnabled="True"  Content="Create Player"  Margin="10,10,10,10" Click="btn_CreatePlayer_Click"  Command="{Binding CreatePlayer}"/>
+                <Button x:Name="btn_UpdatePlayer" IsEnabled="False" Content="Update Player"  Margin="10,10,10,10" Command="{Binding UpdatePlayer}"/>
+                <Button x:Name="btn_DeletePlayer" IsEnabled="False" Content="Delete Player"  Margin="10,10,10,10" Command="{Binding DeletePlayer}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Button x:Name="btn_CreateCoach" IsEnabled="True" Content="Create Head Coach" Margin="10,10,10,10"  Command="{Binding CreateCoach}"/>
+                <Button x:Name="btn_UpdateCoach" IsEnabled="False" Content="Update Head Coach"  Margin="10,10,10,10" Command="{Binding UpdateCoach}"/>
+                <Button x:Name="btn_DeleteCoach" IsEnabled="False" Content="Delete Head Coach"  Margin="10,10,10,10" Command="{Binding DeleteCoach}"/>
+            </StackPanel>
+            <Button x:Name="btn_Stat" Content="Show Stats" Command="{Binding ShowStats}"/>
+        </StackPanel>
+    </Grid>
+</Window>

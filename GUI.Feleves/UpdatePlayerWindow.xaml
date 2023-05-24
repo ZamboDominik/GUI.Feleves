@@ -1,0 +1,34 @@
+﻿<Window x:Class="GUI.Feleves.UpdatePlayerWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GUI.Feleves"
+        xmlns:viewmodel="clr-namespace:GUI.Feleves.VeiwModels"
+        mc:Ignorable="d"
+        Title="UpdatePlayerWindow" Height="450" Width="800">
+    <Window.DataContext>
+        <viewmodel:UpdatePlayerViewModel/>
+    </Window.DataContext>
+    <Grid>
+        <StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Player Name:"/>
+                <TextBox x:Name="tb_Name" MinWidth="150" Text="{Binding player.Name,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Salary:"/>
+                <TextBox x:Name="tb_Salary" MinWidth="150" Text="{Binding player.Salary,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label Content="TeamID:"/>
+                <TextBox x:Name="tb_teamID" MinWidth="150" Text="{Binding player.TeamID,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Position:"/>
+                <TextBox x:Name="tb_Pos" MinWidth="150" Text="{Binding player.Position,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+            </StackPanel>
+            <Button x:Name="btn_Update" Content="Update Player" Command="{Binding UpdatePlayer}" Click="btn_Update_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>
