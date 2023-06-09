@@ -53,8 +53,9 @@ namespace OSAHN6_HFT_202231.Endpoint.Controllers
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
-            this.logic.Delete(id);
             var toDelete = this.logic.Read(id);
+          
+            
             logic.Delete(id);
             hub.Clients.All.SendAsync("TeamDeleted", toDelete);
             hub.Clients.All.SendAsync("StatUpdated", toDelete);

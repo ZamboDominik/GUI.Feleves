@@ -1,0 +1,198 @@
+﻿<Window x:Class="GUIWPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:viewmodel="clr-namespace:GUIWPF.ViewModels"
+        xmlns:local="clr-namespace:GUIWPF"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="1280" Width="960">
+    <Window.DataContext>
+        <viewmodel:MainWindowViewModel/>
+    </Window.DataContext>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Column="0">
+            <ListBox x:Name="Lb_Teams" ItemsSource="{Binding Teams}" SelectedItem="{Binding SelectedTeam}" >
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Label Content="{Binding Name}" />
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+            <StackPanel Orientation="Vertical">
+                <Label Content="Team Name:"/>
+                <TextBox Text="{Binding CreateteamString,Mode=OneWayToSource}" MinWidth="50"/>
+                <Label Content="Luxury Tax:"/>
+                <TextBox Text="{Binding TaxString,Mode=OneWayToSource}" MinWidth="50"/>
+                <Button Content="Add Team" Command="{Binding CreateTeam}"/>
+                <Label Content="Name:"/>
+                <TextBox Text="{Binding SelectedTeam.Name,Mode=TwoWay}" MinWidth="50"/>
+                <Label Content="Luxury Tax:"/>
+                <TextBox Text="{Binding SelectedTeam.LuxuryTax,Mode=TwoWay}" MinWidth="50"/>
+                <Button Content="Update Team" Command="{Binding UpdateTeam}"/>
+                <Button Content="Delete Team" Command="{Binding DeleteTeam}"/>
+            </StackPanel>
+        </StackPanel>
+        <StackPanel Grid.Column="1">
+            <StackPanel Orientation="Horizontal">
+                <Label Content="HeadCoach"></Label>
+                <Label Content="{Binding SelectedCoach.CoachName}"/>
+            </StackPanel>
+            <ListBox ItemsSource="{Binding players}" SelectedItem="{Binding SelectedPlayer}">
+            </ListBox>
+        </StackPanel>
+        <StackPanel Grid.Column="2">
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Player Name:"/>
+                <TextBox x:Name="tb_Name" MinWidth="150" Text="{Binding NameString,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Salary:"/>
+                <TextBox x:Name="tb_Salary" MinWidth="150" Text="{Binding SalaryString,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label Content="TeamID:"/>
+                <TextBox x:Name="tb_teamID" MinWidth="150" Text="{Binding TeamIDString,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Position:"/>
+                <TextBox x:Name="tb_Pos" MinWidth="150" Text="{Binding PositionString,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+            </StackPanel>
+            <Button x:Name="tb_Crate" Content="Create Player" Command="{Binding CreatePlayer}" />
+            
+            
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Player Name:"/>
+                <TextBox x:Name="tb_NameUPDATE" MinWidth="150" Text="{Binding SelectedPlayer.Name,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Salary:"/>
+                <TextBox x:Name="tb_SalaryUPDATE" MinWidth="150" Text="{Binding SelectedPlayer.Salary,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label Content="TeamID:"/>
+                <TextBox x:Name="tb_teamIDUPDATE" MinWidth="150" Text="{Binding SelectedPlayer.TeamID,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Position:"/>
+                <TextBox x:Name="tb_PosUPDATE" MinWidth="150" Text="{Binding SelectedPlayer.Position,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+            </StackPanel>
+            <Button x:Name="tb_Update" Content="Update Player" Command="{Binding UpdatePlayer}" />
+            <Button x:Name="tb_Delete" Content="Delete Player" Command="{Binding DeletePlayer}" />
+        </StackPanel>
+        <StackPanel Grid.Column="3">
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Coach Name:"/>
+                <TextBox x:Name="tb_CName" MinWidth="150" Text="{Binding CNameString,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Salary:"/>
+                <TextBox x:Name="tb_CSalary" MinWidth="150" Text="{Binding CSalaryString,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label Content="TeamID:"/>
+                <TextBox x:Name="tb_CteamID" MinWidth="150" Text="{Binding CTeamIDString,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+            </StackPanel>
+            <Button x:Name="tb_CCrate" Content="Create Coach" Command="{Binding CreateCoach}" />
+
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Coach Name:"/>
+                <TextBox x:Name="tb_CNameU" MinWidth="150" Text="{Binding SelectedCoach.CoachName,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Salary:"/>
+                <TextBox x:Name="tb_CSalaryU" MinWidth="150" Text="{Binding SelectedCoach.Salary,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label Content="TeamID:"/>
+                <TextBox x:Name="tb_CteamIDU" MinWidth="150" Text="{Binding SelectedCoach.TeamID,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+            </StackPanel>
+            <Button x:Name="tb_CUpdate" Content="Update Coach" Command="{Binding UpdateCoach}" />
+            <Button x:Name="tb_CDelete" Content="Delete Coach" Command="{Binding DeleteCoach}" />
+            <Button x:Name="tb_Stats" Content="Show Stats" Command="{Binding StatWindow}" />
+        </StackPanel>
+
+
+
+
+        <!--<StackPanel Grid.Column="1" Orientation="Vertical">
+            <Label Content="Create:"/>
+            <ListBox x:Name="LbBrand" ItemsSource="{Binding SelectedBrands}" SelectedItem="{Binding SelectedBrand}"/>
+            <Label Content="Name:"/>
+            <TextBox Text="{Binding CreateBrandName,Mode=OneWayToSource}"></TextBox>
+            <Label Content="Country ID:"/>
+            <TextBox Text="{Binding SelectedBrandID, Mode=OneWayToSource}"></TextBox>
+            <Button Content="Create Brand" Command="{Binding CreateBrand}"/>
+            <Label Content="Update:"/>
+            <Label Content="Name:"/>
+            <TextBox Text="{Binding SelectedBrand.name, Mode=TwoWay}"></TextBox>
+            <Label Content="Country ID:"/>
+            <TextBox Text="{Binding SelectedBrand.CountryID, Mode=TwoWay}"></TextBox>
+
+
+            <Button Content="Update Brand" Command="{Binding UpdateBrand}"/>
+            <Button Content="Delete Brand" Command="{Binding DeleteBrand}"/>
+        </StackPanel>
+        <ListBox ItemsSource="{Binding SelectedPhones}" SelectedItem="{Binding SelectedPhone}" Grid.Column="2">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Vertical">
+                        <StackPanel Orientation="Horizontal">
+                            <Label Content="{Binding name}" />
+                            <Label Content="{Binding Price}" ContentStringFormat="Price: 0 FT"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <Label Content="{Binding RAM}" ContentStringFormat="Ram: 0 GB"/>
+                            <Label Content="{Binding Storage}" ContentStringFormat="Storage: 0 GB" />
+                        </StackPanel>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <StackPanel Grid.Column="3">
+            <Label Content="Create"/>
+            <Label Content="Name:"/>
+            <TextBox Text="{Binding PhoneName}"/>
+            <Label Content="Ram:"/>
+            <TextBox Text="{Binding PhoneRam}"/>
+            <Label Content="Storage:"/>
+            <TextBox Text="{Binding PhoneStorage}"/>
+            <Label Content="Price:"/>
+            <TextBox Text="{Binding PhonePrice}"/>
+            <Label Content="PriceCategory:"/>
+            <TextBox Text="{Binding PhonePriceCat}"/>
+            <Label Content="BrandID:"/>
+            <TextBox Text="{Binding PhoneBrandID}"/>
+
+
+            <Label Content="Update"/>
+            <Label Content="Name:"/>
+            <TextBox Text="{Binding SelectedPhone.name}"/>
+            <Label Content="Ram:"/>
+            <TextBox Text="{Binding SelectedPhone.RAM}"/>
+            <Label Content="Storage:"/>
+            <TextBox Text="{Binding SelectedPhone.Storage}"/>
+            <Label Content="Price:"/>
+            <TextBox Text="{Binding SelectedPhone.Price}"/>
+            <Label Content="PriceCategory:"/>
+            <TextBox Text="{Binding SelectedPhone.PriceCategory}"/>
+            <Label Content="BrandID:"/>
+            <TextBox Text="{Binding SelectedPhone.BrandID}"/>
+
+            <Button Content="Create Phone" Command="{Binding CreatePhone}"/>
+            <Button Content="Update Phone" Command="{Binding UpdatePhone}"/>
+            <Button Content="Delete Phone" Command="{Binding DeletePhone}"/>
+            <Button Content="Show Statistics" Command="{Binding ShowStat}"/>
+
+
+        </StackPanel>-->
+    </Grid>
+</Window>     
+

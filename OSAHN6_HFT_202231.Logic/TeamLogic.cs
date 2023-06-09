@@ -36,8 +36,7 @@ namespace OSAHN6_HFT_202231.Logic
         }
 
         public Team Read(int id)
-        {
-           
+        {          
             if (repo.ReadAll().Select(x => x.Id).Contains(id)) return this.repo.Read(id); 
             else throw new Exception("Not Found");
         }
@@ -50,8 +49,7 @@ namespace OSAHN6_HFT_202231.Logic
         public void Update(Team item)
         {
             if(item.Name.Length <= 0 || item.Name.Length > 100) throw new FormatException();
-            if(item.LuxuryTax <0 ) throw new FormatException();
-            //if (repo.ReadAll().Select(x => x.Id).Contains(item.Id)) throw new FormatException();
+            if(item.LuxuryTax <0 ) throw new FormatException();           
             this.repo.Update(item);
         }
         public Player HighestSalary(string team) 

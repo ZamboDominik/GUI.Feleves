@@ -85,7 +85,7 @@ async function getdata() {
         .then(x => x.json())
         .then(y => {
            
-            display("Every PG in GSW", true);
+            display("Highest Paid in Maverics", true);
 
             document.getElementById('resultarea').innerHTML += "<tr><td>" + y.name + "</td></tr>";
            

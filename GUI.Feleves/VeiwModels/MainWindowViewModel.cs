@@ -43,7 +43,7 @@ namespace GUI.Feleves.VeiwModels
                     OnPropertyChanged();
                     OnPropertyChanged(nameof(SelectedPlayers));
                     OnPropertyChanged(nameof(SelectedCoach));
-                    //  (DeleteActorCommand as RelayCommand).NotifyCanExecuteChanged();
+                    (DeleteTeam as RelayCommand).NotifyCanExecuteChanged();
                 }
             }
         }
@@ -148,6 +148,7 @@ namespace GUI.Feleves.VeiwModels
             DeleteTeam = new RelayCommand(() =>
             {
                 Teams.Delete(SelectedTeam.Id);
+                SelectedTeam = new Team();
             }
             );
             DeletePlayer = new RelayCommand(() =>

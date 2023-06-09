@@ -13,7 +13,7 @@ namespace GUI.Feleves.VeiwModels
         protected static Player actualPlayer;
         protected static Team actualTeam;
         protected static Coach actualCoach;
-        public static RestCollection<Team> Teams { get; set; } = new RestCollection<Team>("http://localhost:5417/", "Team");
+        public static RestCollection<Team> Teams { get; set; } = new RestCollection<Team>("http://localhost:5417/", "Team","hub");
         public static RestCollection<Player> Players { get; set; } = new RestCollection<Player>("http://localhost:5417/", "Player", "hub");
         public static RestCollection<Coach> Coaches { get; set; } = new RestCollection<Coach>("http://localhost:5417/", "Coach", "hub");
         public BasicViewModel()

@@ -30,6 +30,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GUI.Feleves", "GUI.Feleves\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GUI_Feleves_JS", "GUI_Feleves_JS\GUI_Feleves_JS.csproj", "{053941AA-960F-4C97-939D-6B548CD3D515}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GUIWPF", "GUIWPF\GUIWPF.csproj", "{43E732EA-AAC9-44FC-9B08-B287517DCD15}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -68,6 +70,10 @@ Global
 		{053941AA-960F-4C97-939D-6B548CD3D515}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{053941AA-960F-4C97-939D-6B548CD3D515}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{053941AA-960F-4C97-939D-6B548CD3D515}.Release|Any CPU.Build.0 = Release|Any CPU
+		{43E732EA-AAC9-44FC-9B08-B287517DCD15}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{43E732EA-AAC9-44FC-9B08-B287517DCD15}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{43E732EA-AAC9-44FC-9B08-B287517DCD15}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{43E732EA-AAC9-44FC-9B08-B287517DCD15}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
