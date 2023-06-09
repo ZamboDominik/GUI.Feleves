@@ -151,6 +151,7 @@ namespace GUIWPF.ViewModels
                     if (selectedPlayer != null && SelectedPlayer.Name.Length >= 1 && SelectedPlayer.Salary > 0 && SelectedPlayer.Position.Length >= 1 && SelectedPlayer.TeamID > 0)
                         Players.Update(SelectedPlayer);
                         players = Players.Where(x => x.TeamID.Equals(selectedTeam.Id)).ToList();
+                        OnPropertyChanged(nameof(players));
                 }
                 catch (Exception e) { }
 
